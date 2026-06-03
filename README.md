@@ -15,33 +15,129 @@
 - 📱 **响应式** — 手机和桌面端都能流畅游玩
 - 🎨 **毛玻璃 UI** — 深色主题 + 渐变背景 + 流畅动画
 
-## 🎮 快速开始
+## 🎮 安装与运行
 
-### 前提条件
+### 第一步：安装 Node.js
 
-- [Node.js](https://nodejs.org/) ≥ 18
-- [DeepSeek API Key](https://platform.deepseek.com/)（免费注册即可获取）
-
-### 安装与运行
+本项目需要 Node.js ≥ 18。在终端中检查是否已安装：
 
 ```bash
-# 1. 克隆仓库
+node --version
+# 应显示 v18.x.x 或更高
+```
+
+如果未安装，去 [nodejs.org](https://nodejs.org/) 下载 LTS 版本并安装。安装完成后重新打开终端，再次运行 `node --version` 确认。
+
+---
+
+### 第二步：克隆仓库并安装依赖
+
+```bash
+# 克隆项目到本地
 git clone https://github.com/szm20060312/ai-emoji-idiom-game.git
 cd ai-emoji-idiom-game
 
-# 2. 安装依赖
+# 安装依赖（express、cors、dotenv）
 npm install
-
-# 3. 配置 API Key
-cp .env.example .env
-# 编辑 .env 文件，填入你的 DeepSeek API Key
-
-# 4. 启动
-node server.js
-
-# 5. 打开浏览器
-# http://localhost:3000
 ```
+
+---
+
+### 第三步：获取 AI API Key（三选一）
+
+游戏需要 AI 来生成谜题。支持三种 AI 服务，选一个即可。**推荐 DeepSeek**（国产，注册简单，有免费额度）。
+
+<details>
+<summary><strong>🔷 方案 A：DeepSeek（推荐）</strong></summary>
+
+1. 打开 [platform.deepseek.com](https://platform.deepseek.com/)，注册账号
+2. 登录后点击左侧菜单「API Keys」
+3. 点击「创建 API Key」，输入名称（比如 `emoji-game`），点击创建
+4. **复制生成的 Key**（格式为 `sk-xxxx...`，只显示一次，请妥善保存）
+5. 在项目文件夹中创建 `.env` 文件：
+
+```bash
+cp .env.example .env
+```
+
+6. 用任意文本编辑器（VS Code 即可）打开 `.env`，修改为：
+
+```env
+AI_PROVIDER=deepseek
+DEEPSEEK_API_KEY=sk-你的key粘贴在这里
+```
+
+</details>
+
+<details>
+<summary><strong>🔶 方案 B：OpenAI</strong></summary>
+
+1. 打开 [platform.openai.com](https://platform.openai.com/)，注册并登录
+2. 进入「API Keys」页面，创建新 Key
+3. 编辑 `.env` 文件：
+
+```env
+AI_PROVIDER=openai
+OPENAI_API_KEY=sk-你的key粘贴在这里
+```
+
+</details>
+
+<details>
+<summary><strong>🔵 方案 C：Anthropic (Claude)</strong></summary>
+
+1. 打开 [console.anthropic.com](https://console.anthropic.com/)，注册并登录
+2. 进入「API Keys」页面，创建新 Key
+3. 编辑 `.env` 文件：
+
+```env
+AI_PROVIDER=anthropic
+ANTHROPIC_API_KEY=sk-ant-你的key粘贴在这里
+```
+
+</details>
+
+> ⚠️ **安全提醒**：`.env` 文件已在 `.gitignore` 中排除，不会被上传到 GitHub。绝对不要把 API Key 写在 `script.js` 或 `index.html` 里。
+
+---
+
+### 第四步：启动游戏
+
+```bash
+node server.js
+```
+
+看到以下输出说明启动成功：
+
+```
+🎮 ================================
+   AI 表情猜谜王 后端已启动！
+   地址: http://localhost:3000
+   ✅ AI API 已配置 — 全部题目由 AI 动态生成
+🎮 ================================
+```
+
+如果提示 `❌ 未配置 AI API Key`，请回到第三步检查 `.env` 文件。
+
+---
+
+### 第五步：打开浏览器
+
+访问 **http://localhost:3000**，输入昵称，点击"开始游戏"即可游玩。
+
+---
+
+### 常见问题
+
+| 问题 | 解决方法 |
+|------|----------|
+| `node: command not found` | 未安装 Node.js，去看第一步 |
+| `❌ 未配置 AI API Key` | `.env` 文件未创建或 Key 写错 |
+| 游戏加载但不出题 | 查看终端日志：`[错误]` 开头的是错误信息 |
+| `DeepSeek API 错误 401` | API Key 无效或已过期 |
+| `DeepSeek API 错误 402` | 账户余额不足，去 platform.deepseek.com 充值 |
+| 端口 3000 被占用 | 在 `.env` 中加 `PORT=3001` 换端口 |
+| 题目一直重复 | 正常，JS 会自动重试最多 3 次确保去重 |
 
 ## 🛠️ 技术栈
 
