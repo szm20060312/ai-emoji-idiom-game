@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 表情猜成语 🏮</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- ==================== 开始页 ==================== -->
+    <div id="page-start" class="page active">
+      <div class="card">
+        <div class="logo">🏮</div>
+        <h1 class="title">AI 表情猜成语</h1>
+        <p class="subtitle">看 Emoji，猜四字成语！AI 为你生成无限谜题 🧠</p>
+        <input
+          type="text"
+          id="input-nickname"
+          class="input"
+          placeholder="输入你的昵称..."
+          maxlength="10"
+          autocomplete="off"
+        >
+        <button id="btn-start" class="btn btn-primary" disabled>开始游戏 🚀</button>
+        <button id="btn-goto-leaderboard" class="btn btn-outline">🏆 排行榜</button>
+      </div>
+    </div>
+
+    <!-- ==================== 游戏中页 ==================== -->
+    <div id="page-game" class="page">
+      <div class="card">
+        <div class="game-header">
+          <div class="game-info">
+            <span id="game-score">⭐ 0 分</span>
+            <span id="game-combo" class="combo hidden">🔥 连击 x1</span>
+          </div>
+          <div class="game-info">
+            <span id="game-difficulty-badge"></span>
+            <span id="game-round">第 1 题</span>
+          </div>
+        </div>
+
+        <!-- 计时器 -->
+        <div id="timer-bar" class="timer-bar hidden">
+          <div id="timer-fill" class="timer-fill"></div>
+        </div>
+
+        <!-- Emoji 展示区 -->
+        <div id="emoji-display" class="emoji-display">
+          <span class="loading-text">🤔 AI 正在出题...</span>
+        </div>
+
+        <!-- 提示按钮 -->
+        <button id="btn-hint" class="btn btn-hint">💡 提示 (3/3)</button>
+
+        <!-- 提示内容 -->
+        <div id="hint-display" class="hint hidden">
+          <span id="hint-text"></span>
+        </div>
+
+        <!-- 输入区 -->
+        <div class="input-group">
+          <input
+            type="text"
+            id="input-answer"
+            class="input input-answer"
+            placeholder="输入你的答案..."
+            autocomplete="off"
+          >
+          <button id="btn-submit" class="btn btn-primary">确认 ✓</button>
+        </div>
+        <button id="btn-skip" class="btn btn-outline-small">跳过此题 →</button>
+
+        <!-- 反馈区 -->
+        <div id="feedback" class="feedback hidden"></div>
+      </div>
+    </div>
+
+    <!-- ==================== 结算页 ==================== -->
+    <div id="page-result" class="page">
+      <div class="card">
+        <div class="result-emoji" id="result-emoji">🎉</div>
+        <h2 class="page-title" id="result-title">太棒了！</h2>
+        <div class="result-stats">
+          <div class="stat">
+            <span class="stat-value" id="result-score">0</span>
+            <span class="stat-label">总得分</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="result-correct">0</span>
+            <span class="stat-label">答对</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="result-max-combo">0</span>
+            <span class="stat-label">最高连击</span>
+          </div>
+        </div>
+        <div class="result-buttons">
+          <button id="btn-play-again" class="btn btn-primary">再来一局 🔄</button>
+          <button id="btn-result-leaderboard" class="btn btn-outline">🏆 查看排行榜</button>
+          <button id="btn-result-home" class="btn btn-outline-small">🏠 返回首页</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 排行榜页 ==================== -->
+    <div id="page-leaderboard" class="page">
+      <div class="card">
+        <h2 class="page-title">🏆 排行榜</h2>
+        <div id="leaderboard-list" class="leaderboard-list">
+          <p class="empty-text">暂无记录，快来玩一局吧！</p>
+        </div>
+        <button id="btn-leaderboard-back" class="btn btn-outline">← 返回</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
