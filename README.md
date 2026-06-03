@@ -2,7 +2,9 @@
 
 > 看 Emoji，猜四字成语！AI 动态生成无限谜题。
 
-一个纯前端 + 简易后端的网页猜谜游戏。AI 根据你的选择实时生成 emoji 谜题，你需要从 emoji 组合中猜出对应的四字成语。
+一个纯前端 + 简易后端的网页猜谜游戏。AI 实时生成 emoji 谜题，玩家从 emoji 组合中猜出对应的四字成语。
+
+> 🌀 **Vibe Coding 项目** — 本项目通过 AI 辅助编程（Claude Code）完成开发，从需求讨论、架构设计到代码实现，全程由 AI 协作驱动。
 
 ## ✨ 功能
 
@@ -147,8 +149,20 @@ node server.js
 | **后端** | Node.js · Express 4.x |
 | **AI** | DeepSeek API（兼容 OpenAI 格式，也支持 Anthropic / OpenAI） |
 | **存储** | 浏览器 localStorage |
-| **开发工具** | VS Code · Live Server |
+| **AI 开发** | Claude Code（Anthropic） — Vibe Coding 协作 |
 | **运行环境** | 纯本地，Node.js ≥ 18 |
+
+## 🔧 开发工具
+
+| 工具 | 用途 |
+|------|------|
+| **VS Code** | 代码编辑器，主开发环境 |
+| **Live Server** | VS Code 插件，前端热重载调试 |
+| **Claude Code** | AI 编程助手，Vibe Coding 全流程协作（需求 → 设计 → 编码 → 测试） |
+| **DeepSeek API** | AI 谜题生成（`deepseek-chat` 模型） |
+| **终端 (zsh)** | macOS 终端，运行 `node server.js` |
+| **Git & GitHub** | 版本管理 + 代码托管 |
+| **Chrome DevTools** | 前端调试，Console / Network 排查问题 |
 
 ### 为什么选择这些技术？
 
@@ -156,6 +170,7 @@ node server.js
 - **Express**：最简洁的 Node.js 后端框架，一个文件即可完成 API 代理
 - **DeepSeek API**：国产 AI，注册简单，性价比高，API 兼容 OpenAI 格式
 - **localStorage**：排行榜数据存浏览器本地，无需数据库
+- **Claude Code**：Vibe Coding 模式，用自然语言描述需求，AI 辅助实现，降低编程门槛
 
 ## 📁 项目结构
 
