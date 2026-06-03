@@ -123,7 +123,7 @@ node server.js
 
 ### 第五步：打开浏览器
 
-访问 **http://localhost:3000**，输入昵称，点击"开始游戏"即可游玩。
+访问 http://localhost:3000 ，输入昵称，点击"开始游戏"即可游玩。
 
 ---
 
@@ -177,7 +177,7 @@ node server.js
 
 ## 🔒 安全
 
-- API Key 存储在 `.env` 文件，已通过 `.gitignore` 排除
+- API Key 存储在 `.env` 文件
 - 前端代码中不包含任何密钥
 - 后端作为 API 代理，前端不直接调用 AI 服务
 
